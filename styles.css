@@ -64,6 +64,8 @@ ul { list-style: none; }
 button { font-family: inherit; border: none; background: none; cursor: pointer; }
 input, select, textarea { font-family: inherit; font-size: 15px; }
 
+.fa-solid { font-size: 20px;}
+
 ::selection { background: var(--cherry); color: #fff; }
 
 /* Custom Scrollbar 
@@ -532,7 +534,7 @@ input, select, textarea { font-family: inherit; font-size: 15px; }
     transition: all 0.25s;
 }
 .hero-dot.active, .hero-dot:hover { background: var(--gold); width: 20px; }
-.slide-content { padding: 90px 0 110px; color: #fff; max-width: 850px; }
+.slide-content { padding: 40px 0 110px; color: #fff; max-width: 850px; }
 .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -954,8 +956,8 @@ input, select, textarea { font-family: inherit; font-size: 15px; }
 .store-header h3 { font-size: 19px; font-weight: 800; color: var(--ink); }
 .store-header p { font-size: 13px; color: var(--cherry); font-weight: 600; }
 .store-details { margin-bottom: 24px; }
-.store-details p { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--slate); padding: 7px 0; }
-.store-details i { color: var(--cherry); margin-top: 3px; width: 16px; }
+.store-details p { gap: 10px; align-items: flex-start; font-size: 16px; color: var(--slate); padding: 7px 0; }
+.store-details i { color: var(--cherry); margin-top: 3px; width: 16px; margin-right: 12px;}
 
 /* ============================================================
    TESTIMONIALS
@@ -1044,7 +1046,7 @@ input, select, textarea { font-family: inherit; font-size: 15px; }
     background: #fff;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    padding: 38px;
+    padding: 18px;
     border: 1px solid var(--border);
 }
 .contact-form-box h3 { font-size: 21px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
@@ -1645,6 +1647,14 @@ input, select, textarea { font-family: inherit; font-size: 15px; }
 }
 
 @media (max-width: 640px) {
+    .store-header h3 {
+    font-size: 24px;
+    font-weight: 900;}
+
+    .store-header p {
+    font-size: 23px;
+    
+}
     .section-padding { padding: 56px 0; }
     .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
@@ -1672,7 +1682,7 @@ input, select, textarea { font-family: inherit; font-size: 15px; }
     .footer-bottom-content { justify-content: center; text-align: center; }
     .payment-methods { justify-content: center; }
     .hero-section, .hero-slider, .slide { min-height: 520px; }
-    .slide-content { padding: 64px 0 72px; }
+    .slide-content { padding: 24px 0 72px; }
     .hero-badge { font-size: 10px; letter-spacing: 1.5px; padding: 6px 13px; }
     .hero-desc { font-size: 15.5px; }
     .hero-buttons .btn { padding: 12px 18px; font-size: 13px; }
@@ -1687,7 +1697,7 @@ input, select, textarea { font-family: inherit; font-size: 15px; }
     .checkout-modal-header h2 { font-size: 21px; }
     .service-box { padding: 24px; }
     .store-card { padding: 26px; }
-    .store-details p { font-size: 14px; }
+    .store-details p { font-size: 16px; }
     .testimonial-card { padding: 26px; }
     .fstore-card ul li { font-size: 20px; }
 }
