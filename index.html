@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cherry Chile | Importadora Premium de Chocolatería, Repostería & Gastronomía</title>
+    <meta name="description" content="Cherry Chile Importadora SpA: insumos, herramientas y equipamiento profesional para chocolatería, repostería, cocina, menaje y ropa de chef. Despacho a todo Chile.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-info">
+                <span><i class="fa-solid fa-truck-fast"></i> Envíos a todo Chile | Despacho Express RM</span>
+                <span class="divider">|</span>
+                <span><i class="fa-solid fa-headset"></i> Ventas: <a href="tel:+56998185589">+56 9 9818 5589</a></span>
+            </div>
+            <div class="top-links">
+                <a href="#empresa"><i class="fa-solid fa-building"></i> Cherry Empresa</a>
+                <a href="#tiendas"><i class="fa-solid fa-location-dot"></i> Nuestras Tiendas</a>
+                <a href="#contacto"><i class="fa-solid fa-envelope"></i> Contacto</a>
+            </div>
+            <div class="top-social">
+                <a href="https://facebook.com" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/cherrychile.cl" target="_blank" rel="noopener" title="Instagram @cherrychile.cl" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN GLASS HEADER -->
+    <header class="main-header" id="mainHeader">
+        <div class="container header-container">
+            <button class="mobile-toggle-btn" id="mobileToggleBtn" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <a href="#" class="brand-logo">
+                <img src="logo.png" alt="Cherry Chile - Importadora Gastronómica" class="header-logo-img">
+            </a>
+
+            <div class="header-search">
+                <form id="searchForm" onsubmit="event.preventDefault();">
+                    <div class="search-input-wrapper">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="searchInput" placeholder="Buscar moldes, chocolatería, batidoras..." autocomplete="off">
+                        <button type="button" id="clearSearchBtn" class="clear-search-btn" style="display:none;">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+            </div>
+
+            <div class="header-actions">
+                <button class="action-btn" id="wishlistBtn" title="Lista de Deseos">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="action-badge" id="wishlistCount">0</span>
+                </button>
+
+                <button class="action-btn cart-trigger" id="cartTriggerBtn">
+                    <div class="cart-icon-wrapper">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="action-badge" id="cartCount">0</span>
+                    </div>
+                    <div class="cart-total-text">
+                        <span class="label">Mi Carro</span>
+                        <span class="val" id="cartHeaderTotal">$0</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+<nav class="main-nav">
+            <div class="container nav-container">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#" onclick="filterByCategory('Todos')" class="nav-link active">Todos</a></li>
+                    <li class="nav-item"><a href="#" onclick="filterByCategory('Chocolatería')" class="nav-link">Chocolatería</a></li>
+                    <li class="nav-item"><a href="#" onclick="filterByCategory('Repostería')" class="nav-link">Repostería</a></li>
+                    <li class="nav-item"><a href="#" onclick="filterByCategory('Cocina')" class="nav-link">Cocina</a></li>
+                    <li class="nav-item"><a href="#" onclick="filterByCategory('Eléctricos')" class="nav-link">Eléctricos</a></li>
+                    <li class="nav-item"><a href="#" onclick="filterByCategory('Menaje')" class="nav-link">Menaje & Copas</a></li>
+                    <li class="nav-item"><a href="#" onclick="filterByCategory('Ropa de Chef')" class="nav-link">Ropa de Chef</a></li>
+                    <li class="nav-item"><a href="#" onclick="filterByCategory('Empaques')" class="nav-link">Empaques</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MOBILE DRAWER -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <div class="brand-logo">
+                <img src="logo.png" alt="Cherry Chile" class="brand-logo-img">
+            </div>
+            <button class="close-drawer-btn" id="closeDrawerBtn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="drawer-body">
+            <div class="mobile-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="mobileSearchInput" placeholder="Buscar productos y categorías...">
+            </div>
+            <ul class="mobile-nav-list">
+                <li><a href="#" onclick="filterByCategory('Todos'); closeMobileMenu();"><i class="fa-solid fa-border-all"></i> Todos los Productos</a></li>
+                <li><a href="#" onclick="filterByCategory('Chocolatería'); closeMobileMenu();"><i class="fa-solid fa-cookie-bite"></i> Chocolatería</a></li>
+                <li><a href="#" onclick="filterByCategory('Repostería'); closeMobileMenu();"><i class="fa-solid fa-cake-candles"></i> Repostería</a></li>
+                <li><a href="#" onclick="filterByCategory('Cocina'); closeMobileMenu();"><i class="fa-solid fa-utensils"></i> Cocina Profesional</a></li>
+                <li><a href="#" onclick="filterByCategory('Eléctricos'); closeMobileMenu();"><i class="fa-solid fa-plug"></i> Eléctricos</a></li>
+                <li><a href="#" onclick="filterByCategory('Menaje'); closeMobileMenu();"><i class="fa-solid fa-glass-water"></i> Menaje & Cristalería</a></li>
+                <li><a href="#" onclick="filterByCategory('Ropa de Chef'); closeMobileMenu();"><i class="fa-solid fa-shirt"></i> Ropa de Chef</a></li>
+                <li><a href="#" onclick="filterByCategory('Empaques'); closeMobileMenu();"><i class="fa-solid fa-box-open"></i> Empaques & Plásticos</a></li>
+                <li><a href="#" onclick="filterByCategory('Veganos & Químicos'); closeMobileMenu();"><i class="fa-solid fa-leaf"></i> Veganos & Químicos</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: linear-gradient(135deg, rgb(15 23 42 / 69%) 0%, rgb(150 0 60 / 28%) 100%), url(images/hero-1.png);">
+                <div class="container slide-content">
+                    <span class="hero-badge"><i class="fa-solid fa-crown"></i> CHERRY CHILE IMPORTADORA PREMIUM</span>
+                    <h1 class="hero-title">Pasión y Perfección en <br><span class="highlight-gold">Chocolatería y Repostería</span></h1>
+                    <p class="hero-desc">Descubre el catálogo de insumos, herramientas y equipamiento gastronómico importado más completo de Chile. Calidad profesional para repostería, alta cocina y alta chocolatería.</p>
+                    <div class="hero-buttons">
+                        <a href="#catalogo" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Explorar Catálogo</a>
+                        <a href="#empresa" class="btn btn-outline"><i class="fa-solid fa-building"></i> Cotización Mayorista</a>
+                    </div>
+                    <div class="hero-features">
+                        <div class="h-feat"><i class="fa-solid fa-truck-fast"></i> <span>Envíos Rápidos a todo Chile</span></div>
+                        <div class="h-feat"><i class="fa-solid fa-shield-halved"></i> <span>Garantía de Calidad</span></div>
+                                                                        <div class="h-feat"><i class="fa-solid fa-boxes-packing"></i> <span>Stock Importado</span></div>
+                    </div>
+                                </div>
+                </div>
+                <!-- SLIDE 2 -->
+                <div class="slide" style="background-image: linear-gradient(135deg, rgb(15 23 42 / 69%) 0%, rgb(150 0 60 / 28%) 100%), url(images/hero-2.png);">
+                    <div class="container slide-content">
+                        <span class="hero-badge"><i class="fa-solid fa-sparkles"></i> PREMIUM & IMPORTADO</span>
+                        <h1 class="hero-title">Calidad Profesional para tu <br><span class="highlight-gold">Chocolatería Artesanal</span></h1>
+                        <p class="hero-desc">Descubre las últimas novedades en moldes, equipos y herramientas profesionales importadas. Envío a todo Chile con stock disponible.</p>
+                        <div class="hero-buttons">
+                            <a href="#catalogo" class="btn btn-gold"><i class="fa-solid fa-bolt"></i> Novedades</a>
+                            <a href="#empresa" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> Cotizar ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-dots"></div>
+            <button class="hero-nav-btn prev" aria-label="Diapositiva anterior"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="hero-nav-btn next" aria-label="Diapositiva siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+    </section>
+<!-- CATEGORIES SHOWCASE -->
+    <section class="categories-section section-padding" id="categorias">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-title">EXPLORA NUESTRO CATÁLOGO</span>
+                <h2 class="section-title">Categorías Destacadas</h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card" onclick="filterByCategory('Chocolatería')">
+                    <div class="cat-img-wrap">
+                        <img src="images/cat-chocolateria.png" alt="Chocolatería">
+                        <div class="cat-overlay"></div>
+                    </div>
+                    <div class="cat-info">
+                        <div class="cat-icon"><i class="fa-solid fa-cookie-bite"></i></div>
+                        <h3>Chocolatería</h3>
+                        <p>Moldes, coberturas, colorantes & transfers</p>
+                        <span class="cat-link">Ver Colección <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="filterByCategory('Repostería')">
+                    <div class="cat-img-wrap">
+                        <img src="images/mix-boquillas.jpg" alt="Repostería">
+                        <div class="cat-overlay"></div>
+                    </div>
+                    <div class="cat-info">
+                        <div class="cat-icon"><i class="fa-solid fa-cake-candles"></i></div>
+                        <h3>Repostería</h3>
+                        <p>Boquillas, mangas, moldes silicona & fondant</p>
+                        <span class="cat-link">Ver Colección <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="filterByCategory('Cocina')">
+                    <div class="cat-img-wrap">
+                        <img src="images/cat-cocina.jpg" alt="Cocina">
+                        <div class="cat-overlay"></div>
+                    </div>
+                    <div class="cat-info">
+                        <div class="cat-icon"><i class="fa-solid fa-utensils"></i></div>
+                        <h3>Cocina Profesional</h3>
+                        <p>Cuchillos chef, sartenes & herramientas</p>
+                        <span class="cat-link">Ver Colección <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="filterByCategory('Eléctricos')">
+                    <div class="cat-img-wrap">
+                        <img src="images/cat-electricos.jpg" alt="Eléctricos">
+                        <div class="cat-overlay"></div>
+                    </div>
+                    <div class="cat-info">
+                        <div class="cat-icon"><i class="fa-solid fa-plug"></i></div>
+                        <h3>Equipos Eléctricos</h3>
+                        <p>Batidoras, atemperadoras & licuadoras</p>
+                        <span class="cat-link">Ver Colección <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="filterByCategory('Menaje')">
+                    <div class="cat-img-wrap">
+                        <img src="images/cat-menaje.jpg" alt="Menaje">
+                        <div class="cat-overlay"></div>
+                    </div>
+                    <div class="cat-info">
+                        <div class="cat-icon"><i class="fa-solid fa-glass-water"></i></div>
+                        <h3>Menaje & Cristalería</h3>
+                        <p>Platos, vajilla, copas, vasos & pimenteros</p>
+                        <span class="cat-link">Ver Colección <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="filterByCategory('Ropa de Chef')">
+                    <div class="cat-img-wrap">
+                        <img src="images/cat-ropa-chef.jpg" alt="Ropa de Chef">
+                        <div class="cat-overlay"></div>
+                    </div>
+                    <div class="cat-info">
+                        <div class="cat-icon"><i class="fa-solid fa-shirt"></i></div>
+                        <h3>Ropa de Chef</h3>
+                        <p>Chaquetas, delantales de cuero & gorros</p>
+                        <span class="cat-link">Ver Colección <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- PRODUCT CATALOG SECTION -->
+    <section class="products-section section-padding bg-light" id="catalogo">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-title">LO MEJOR EN GASTRONOMÍA</span>
+                <h2 class="section-title">Productos Destacados</h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="catalog-filters">
+                <div class="filter-pills" id="filterPills">
+                    <button class="pill-btn active" data-category="Todos"><i class="fa-solid fa-border-all"></i> Todos</button>
+                    <button class="pill-btn" data-category="Chocolatería"><i class="fa-solid fa-cookie-bite"></i> Chocolatería</button>
+                    <button class="pill-btn" data-category="Repostería"><i class="fa-solid fa-cake-candles"></i> Repostería</button>
+                    <button class="pill-btn" data-category="Cocina"><i class="fa-solid fa-utensils"></i> Cocina</button>
+                    <button class="pill-btn" data-category="Eléctricos"><i class="fa-solid fa-plug"></i> Eléctricos</button>
+                    <button class="pill-btn" data-category="Menaje"><i class="fa-solid fa-glass-water"></i> Menaje</button>
+                    <button class="pill-btn" data-category="Ropa de Chef"><i class="fa-solid fa-shirt"></i> Ropa Chef</button>
+                    <button class="pill-btn" data-category="Empaques"><i class="fa-solid fa-box-open"></i> Empaques</button>
+                    <button class="pill-btn" data-category="Veganos & Químicos"><i class="fa-solid fa-leaf"></i> Veganos & Químicos</button>
+                </div>
+
+                <div class="sort-wrapper">
+                    <label for="sortSelect"><i class="fa-solid fa-arrow-down-short-wide"></i> Ordenar:</label>
+                    <select id="sortSelect" onchange="handleSortChange(this.value)">
+                        <option value="featured">Destacados</option>
+                        <option value="price-low">Precio: Menor a Mayor</option>
+                        <option value="price-high">Precio: Mayor a Menor</option>
+                        <option value="name">Nombre: A - Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+<!-- B2B PROMO BANNER -->
+    <section class="promo-banner-section" id="empresa">
+        <div class="container">
+            <div class="promo-card">
+                <div class="promo-text">
+                    <span class="promo-badge">VENTA MAYORISTA & EMPRESAS</span>
+                    <h2>¿Tienes una Pastelería, Hotel o Restaurant?</h2>
+                    <p>En <strong>Cherry Chile Importadora SpA</strong> ofrecemos precios especiales por volumen, facturación inmediata, atención personalizada y despacho prioritario para negocios gastronómicos en todo Chile.</p>
+                    <div class="promo-benefits">
+                        <span><i class="fa-solid fa-check-circle"></i> Asesoría Técnica de Chefs</span>
+                        <span><i class="fa-solid fa-check-circle"></i> Catálogo B2B Mayorista</span>
+                        <span><i class="fa-solid fa-check-circle"></i> Envíos por Pagar o Retiro</span>
+                    </div>
+                    <a href="https://wa.me/56998185589?text=Hola%20Cherry%20Chile,%20quisiera%20informaci%C3%B3n%20para%20compras%20mayoristas." target="_blank" class="btn btn-gold"><i class="fa-brands fa-whatsapp"></i> Contactar Ejecutivo B2B</a>
+                </div>
+                <div class="promo-image">
+                    <img src="images/promo-chef.jpg" alt="Chef profesional Cherry Chile">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHIPPING CALCULATOR & SERVICES -->
+    <section class="services-calculator-section section-padding bg-light">
+        <div class="container">
+            <div class="grid-2-cols">
+                <div class="service-box dispatch-calc">
+                    <div class="box-header">
+                        <i class="fa-solid fa-truck-ramp-box icon-header"></i>
+                        <div>
+                            <h3>Cotizador de Envíos en Chile</h3>
+                            <p>Consulta tiempos y opciones de entrega para tu región</p>
+                        </div>
+                    </div>
+                    <form id="shippingForm" onsubmit="calculateShipping(event)" class="calc-form">
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-map-location-dot"></i> Selecciona tu Región:</label>
+                            <select id="regionSelect" required>
+                                <option value="">-- Seleccionar Región --</option>
+                                <option value="rm">Región Metropolitana de Santiago</option>
+                                <option value="valpo">Región de Valparaíso</option>
+                                <option value="biobio">Región del Biobío</option>
+                                <option value="coquimbo">Región de Coquimbo</option>
+                                <option value="araucania">Región de La Araucanía</option>
+                                <option value="antofagasta">Región de Antofagasta</option>
+                                <option value="loslagos">Región de Los Lagos</option>
+                                <option value="otra">Otras Regiones de Chile</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-secondary btn-block"><i class="fa-solid fa-calculator"></i> Calcular Envío</button>
+                    </form>
+                    <div id="shippingResult" class="shipping-result-box" style="display:none;"></div>
+                </div>
+
+                <div class="service-box services-info">
+                    <div class="box-header">
+                        <i class="fa-solid fa-award icon-header"></i>
+                        <div>
+                            <h3>¿Por qué elegir Cherry Chile?</h3>
+                            <p>Más de 15 años abasteciendo a los mejores gastronómicos</p>
+                        </div>
+                    </div>
+                    <ul class="cherry-features-list">
+                        <li>
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <div>
+                                <strong>Productos 100% Originales & Importados</strong>
+                                <p>Herramientas certificadas de uso profesional con máxima durabilidad.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-rotate-left"></i>
+                            <div>
+                                <strong>Garantía y Devoluciones Ágiles</strong>
+                                <p>Soporte posventa directo, cambios y garantías rápidas.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-credit-card"></i>
+                            <div>
+                                <strong>Pagos Seguros con Webpay / Transbank</strong>
+                                <p>Paga con tarjetas de débito, crédito en cuotas y transferencia bancaria.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- STORES SECTION -->
+    <section class="stores-section section-padding" id="tiendas">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-title">VISÍTANOS EN PERSONA</span>
+                <h2 class="section-title">Nuestras Tiendas & Atención</h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="stores-grid">
+                <div class="store-card">
+                    <div class="store-header">
+                        <i class="fa-solid fa-store"></i>
+                        <div>
+                            <h3>Tienda Casa Matriz & Showroom</h3>
+                            <p>Santiago, Chile</p>
+                        </div>
+                    </div>
+                    <div class="store-details">
+                        <p><i class="fa-solid fa-location-dot"></i> <strong>Dirección:</strong> Av. Providencia, Santiago, Chile</p>
+                        <p><i class="fa-solid fa-clock"></i> <strong>Horario:</strong> Lun a Vie 09:00 - 18:30 | Sáb 10:00 - 14:00</p>
+                        <p><i class="fa-solid fa-phone"></i> <strong>Mesa Central:</strong> +562 2-2235-1356 / +562 2-2274-3122</p>
+                        <p><i class="fa-brands fa-whatsapp"></i> <strong>WhatsApp:</strong> +569 9818-5589</p>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="btn btn-outline btn-block"><i class="fa-solid fa-map-pin"></i> Ver en Google Maps</a>
+                </div>
+
+                <div class="store-card">
+                    <div class="store-header">
+                        <i class="fa-solid fa-truck-arrow-right"></i>
+                        <div>
+                            <h3>Centro de Distribución & Retiro</h3>
+                            <p>Despachos a todo el país</p>
+                        </div>
+                    </div>
+                    <div class="store-details">
+                        <p><i class="fa-solid fa-boxes-stacked"></i> <strong>Retiros en Tienda:</strong> Disponible previo pago web confirmando orden.</p>
+                        <p><i class="fa-solid fa-truck-fast"></i> <strong>Transportes:</strong> Starken, Chilexpress, TVP, Chevalier y Blue Express.</p>
+                        <p><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> ventas@cherrychile.cl</p>
+                        <p><i class="fa-solid fa-circle-check"></i> <strong>Empresas:</strong> Convenios para institutos gastronómicos y hoteles.</p>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary btn-block"><i class="fa-solid fa-envelope"></i> Enviar Mensaje de Consulta</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section section-padding bg-light">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-title">LO QUE DICEN NUESTROS CLIENTES</span>
+                <h2 class="section-title">Confianza de los Profesionales</h2>
+                <div class="title-line"></div>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"Excelente atención y variedad única en moldes de policarbonato para chocolatería fina. Mis bombones mejoraron un 100% en brillo y desmolde."</p>
+                    <div class="user-info">
+                        <strong>Chef Valentina R.</strong>
+                        <span>Chocolatier Artisanal - Providencia</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"Compramos la batidora de pie y delantales para nuestro taller de repostería. El despacho a Concepción llegó en menos de 48 horas impecable."</p>
+                    <div class="user-info">
+                        <strong>Carlos M.</strong>
+                        <span>Pastelería Dulce Delicia - Concepción</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"La mejor tienda en insumos gastronómicos importados. El stock de insumos veganos y gelificantes es de calidad profesional garantizada."</p>
+                    <div class="user-info">
+                        <strong>Chef Andrea S.</strong>
+                        <span>Restaurante & Banquetería - Vitacura</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- CONTACT & NEWSLETTER -->
+    <section class="contact-section section-padding" id="contacto">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="newsletter-box">
+                    <i class="fa-solid fa-paper-plane nl-icon"></i>
+                    <h3>Inscríbase para Recibir Ofertas Especiales</h3>
+                    <p>¡Sé el primero en conocer los nuevos lanzamientos, ofertas exclusivas, eventos y catálogos de temporada!</p>
+                    <form id="newsletterForm" onsubmit="handleNewsletter(event)" class="nl-form">
+                        <div class="input-group">
+                            <input type="email" id="nlEmail" placeholder="Ingresa tu correo electrónico" required>
+                            <button type="submit" class="btn btn-primary">Inscribirme <i class="fa-solid fa-paper-plane"></i></button>
+                        </div>
+                        <p class="nl-note"><i class="fa-solid fa-lock"></i> Respetamos tu privacidad. Puedes cancelar cuando quieras.</p>
+                    </form>
+                </div>
+
+                <div class="contact-form-box">
+                    <h3><i class="fa-solid fa-headset"></i> ¿Tienes alguna duda o consulta?</h3>
+                    <p>Déjanos un mensaje y nuestro equipo comercial te responderá en breve.</p>
+                    <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                        <div class="form-row">
+                            <input type="text" id="cName" placeholder="Nombre completo" required>
+                            <input type="email" id="cEmail" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="tel" id="cPhone" placeholder="Teléfono (+56 9...)">
+                            <select id="cSubject" required>
+                                <option value="">-- Asunto --</option>
+                                <option value="Ventas">Consulta de Ventas / Productos</option>
+                                <option value="Mayorista">Cotización Mayorista / Empresas</option>
+                                <option value="Envio">Estado de Envío / Despacho</option>
+                                <option value="Otro">Otro Asunto</option>
+                            </select>
+                        </div>
+                        <textarea id="cMessage" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                        <button type="submit" class="btn btn-gold btn-block"><i class="fa-solid fa-paper-plane"></i> Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- FOOTER -->
+    <footer class="main-footer">
+        <!-- CHERRY CHILE - UBICACIONES Y TIENDAS -->
+        <div class="footer-stores">
+            <div class="container">
+                <div class="footer-stores-header">
+                    <div class="fs-header-badge"><i class="fa-solid fa-location-dot"></i></div>
+                    <div>
+                        <span class="sub-title">ENCUÉNTRANOS</span>
+                        <h3>Nuestras Tiendas & Sucursales</h3>
+                    </div>
+                </div>
+                <div class="footer-stores-grid">
+                    <!-- Casa Matriz -->
+                    <div class="fstore-card highlight">
+                        <div class="fstore-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                        <span class="fstore-tag">CASA MATRIZ</span>
+                        <h4>Casa Matriz</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-location-dot"></i> Dirección: Manuel Montt 088</li>
+                            <li><i class="fa-solid fa-phone"></i> Fonos: 2-2274-3122 / 2-2235-1356</li>
+                            <li><i class="fa-brands fa-whatsapp"></i> WhatsApp: +56 9-9818-5589</li>
+                            <li><i class="fa-solid fa-envelope"></i> ventas@cherrychile.cl</li>
+                        </ul>
+                    </div>
+
+                    <!-- Local 1 -->
+                    <div class="fstore-card">
+                        <div class="fstore-icon"><i class="fa-solid fa-store"></i></div>
+                        <span class="fstore-tag">SUCURSAL</span>
+                        <h4>Local 1</h4>
+                        <p class="fstore-service"><i class="fa-solid fa-gears"></i> Servicio: Cotizaciones y Ventas</p>
+                        <ul>
+                            <li><i class="fa-solid fa-location-dot"></i> Dirección: Manuel Montt 077</li>
+                            <li><i class="fa-brands fa-whatsapp"></i> WhatsApp: +56 9-6126-3324</li>
+                            <li><i class="fa-solid fa-envelope"></i> ventas077@cherrychile.cl</li>
+                        </ul>
+                    </div>
+
+                    <!-- Local 2 -->
+                    <div class="fstore-card">
+                        <div class="fstore-icon"><i class="fa-solid fa-store"></i></div>
+                        <span class="fstore-tag">SUCURSAL</span>
+                        <h4>Local 2</h4>
+                        <p class="fstore-service"><i class="fa-solid fa-gears"></i> Servicio: Cotizaciones y Ventas</p>
+                        <ul>
+                            <li><i class="fa-solid fa-location-dot"></i> Dirección: Manuel Montt 062</li>
+                            <li><i class="fa-brands fa-whatsapp"></i> WhatsApp: +56 9-3354-8448</li>
+                            <li><i class="fa-solid fa-envelope"></i> ventas062@cherrychile.cl</li>
+                        </ul>
+                    </div>
+
+                    <!-- Bodega -->
+                    <div class="fstore-card">
+                        <div class="fstore-icon"><i class="fa-solid fa-warehouse"></i></div>
+                        <span class="fstore-tag">DISTRIBUCIÓN</span>
+                        <h4>Bodega (Cherry Chile Importadora Spa)</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-location-dot"></i> Dirección: Avenida Lo Espejo 01565, Calle 14 Bodega 1816</li>
+                            <li><i class="fa-solid fa-envelope"></i> bodega@cherrychile.cl</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                
+        
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="f-col">
+                    <a href="#" class="brand-logo footer-logo">
+                        <img src="logo2.png" alt="Cherry Chile" class="brand-logo-img">
+                    </a>
+                    <p class="f-desc">Importadora líder en Chile especializada en insumos, equipamiento y herramientas profesionales para chocolatería, repostería, alta cocina, cristalería y vestuario gastronómico.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/cherrychile.cl" target="_blank" title="Instagram @cherrychile.cl"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/56998185589" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="f-col">
+                    <h4>Categorías Principales</h4>
+                    <ul class="f-links">
+                        <li><a href="#" onclick="filterByCategory('Chocolatería')"><i class="fa-solid fa-angle-right"></i> Chocolatería Profesional</a></li>
+                        <li><a href="#" onclick="filterByCategory('Repostería')"><i class="fa-solid fa-angle-right"></i> Repostería & Pastelería</a></li>
+                        <li><a href="#" onclick="filterByCategory('Cocina')"><i class="fa-solid fa-angle-right"></i> Cocina & Cuchillería</a></li>
+                        <li><a href="#" onclick="filterByCategory('Eléctricos')"><i class="fa-solid fa-angle-right"></i> Equipos Eléctricos</a></li>
+                        <li><a href="#" onclick="filterByCategory('Menaje')"><i class="fa-solid fa-angle-right"></i> Menaje, Cristalería & Copas</a></li>
+                        <li><a href="#" onclick="filterByCategory('Ropa de Chef')"><i class="fa-solid fa-angle-right"></i> Ropa de Chef & Delantales</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4>Atención al Cliente</h4>
+                    <ul class="f-links">
+                        <li><a href="#contacto"><i class="fa-solid fa-angle-right"></i> Contáctanos</a></li>
+                        <li><a href="#tiendas"><i class="fa-solid fa-angle-right"></i> Envíos y Despachos a Chile</a></li>
+                        <li><a href="#tiendas"><i class="fa-solid fa-angle-right"></i> Cambios y Devoluciones</a></li>
+                        <li><a href="#tiendas"><i class="fa-solid fa-angle-right"></i> Preguntas Frecuentes</a></li>
+                        <li><a href="#empresa"><i class="fa-solid fa-angle-right"></i> Venta Empresa / B2B</a></li>
+                        <li><a href="#"><i class="fa-solid fa-angle-right"></i> Políticas de Privacidad</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4>Contacto & Mesa Central</h4>
+                    <ul class="f-contact-info">
+                        <li><i class="fa-solid fa-phone"></i> +562 2-2235-1356</li>
+                        <li><i class="fa-solid fa-phone"></i> +562 2-2274-3122</li>
+                        <li><i class="fa-brands fa-whatsapp"></i> +569 9818-5589</li>
+                        <li><i class="fa-solid fa-envelope"></i> ventas@cherrychile.cl</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Santiago, Región Metropolitana</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-content">
+                <p>&copy; 2026 <strong>Cherry Chile Importadora SpA</strong> - Todos los derechos reservados.</p>
+                <div class="payment-methods">
+                    <span><i class="fa-solid fa-credit-card"></i> Webpay Plus</span>
+                    <span><i class="fa-brands fa-cc-visa"></i> Visa</span>
+                    <span><i class="fa-brands fa-cc-mastercard"></i> Mastercard</span>
+                    <span><i class="fa-solid fa-building-columns"></i> Transferencia</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+<!-- CART DRAWER -->
+    <div class="cart-drawer-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h3><i class="fa-solid fa-bag-shopping"></i> Tu Carro de Compras</h3>
+            <button class="close-cart-btn" id="closeCartBtn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-drawer-body" id="cartBody"></div>
+        <div class="cart-drawer-footer">
+            <div class="cart-subtotal-row">
+                <span>Subtotal:</span>
+                <span class="subtotal-amount" id="cartSubtotal">$0</span>
+            </div>
+            <p class="cart-shipping-note"><i class="fa-solid fa-truck"></i> Impuestos incluidos. Despacho se calcula en el pago.</p>
+            <div class="cart-actions">
+                <button class="btn btn-outline" onclick="clearCart()">Vaciar Carro</button>
+                <button class="btn btn-gold btn-checkout" id="checkoutBtn" onclick="openCheckoutModal()">CHECKOUT <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT QUICK VIEW MODAL -->
+    <div class="modal-overlay" id="productModalOverlay">
+        <div class="modal-card product-modal">
+            <button class="close-modal-btn" onclick="closeProductModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-body-grid" id="productModalContent"></div>
+        </div>
+    </div>
+<!-- CHECKOUT MODAL -->
+    <div class="modal-overlay" id="checkoutModalOverlay">
+        <div class="modal-card checkout-modal">
+            <button class="close-modal-btn" onclick="closeCheckoutModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="checkout-modal-header">
+                <h2><i class="fa-solid fa-shield-check"></i> Finalizar Compra - Cherry Chile</h2>
+                <p>Completa tus datos para procesar tu orden en Chile</p>
+            </div>
+            <form id="checkoutForm" onsubmit="processCheckout(event)">
+                <div class="checkout-grid">
+                    <div class="checkout-fields">
+                        <h4 class="form-section-title"><i class="fa-solid fa-user"></i> Datos del Comprador</h4>
+                        <div class="form-row">
+                            <input type="text" id="ckName" placeholder="Nombre completo" required>
+                            <input type="text" id="ckRut" placeholder="RUT (12.345.678-9)" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="email" id="ckEmail" placeholder="Correo electrónico" required>
+                            <input type="tel" id="ckPhone" placeholder="Teléfono (+56 9...)" required>
+                        </div>
+
+                        <h4 class="form-section-title"><i class="fa-solid fa-location-dot"></i> Dirección de Entrega</h4>
+                        <div class="form-row">
+                            <select id="ckRegion" required>
+                                <option value="">-- Región --</option>
+                                <option>Región Metropolitana</option>
+                                <option>Valparaíso</option>
+                                <option>Biobío</option>
+                                <option>Coquimbo</option>
+                                <option>La Araucanía</option>
+                                <option>Antofagasta</option>
+                                <option>Otra Región</option>
+                            </select>
+                            <input type="text" id="ckComuna" placeholder="Comuna" required>
+                        </div>
+                        <input type="text" id="ckAddress" placeholder="Calle, número, depto / oficina" required style="width:100%; margin-bottom:12px;">
+
+                        <h4 class="form-section-title"><i class="fa-solid fa-credit-card"></i> Método de Pago</h4>
+                        <div class="payment-options">
+                            <label class="payment-option"><input type="radio" name="paymentMethod" value="Webpay Plus" checked><span><i class="fa-solid fa-credit-card"></i> Webpay Plus</span></label>
+                            <label class="payment-option"><input type="radio" name="paymentMethod" value="Transferencia Bancaria"><span><i class="fa-solid fa-building-columns"></i> Transferencia (5% desc)</span></label>
+                            <label class="payment-option"><input type="radio" name="paymentMethod" value="Pedido WhatsApp"><span><i class="fa-brands fa-whatsapp"></i> Confirmar por WhatsApp</span></label>
+                        </div>
+                    </div>
+
+                    <div class="order-summary-box">
+                        <h3>Resumen del Pedido</h3>
+                        <div class="summary-items" id="checkoutItemsList"></div>
+                        <div class="summary-totals">
+                            <div class="total-row"><span>Subtotal:</span> <span id="ckSubtotal">$0</span></div>
+                            <div class="total-row"><span>Despacho Estimado:</span> <span id="ckShipping">$3.990</span></div>
+                            <div class="total-row grand-total"><span>Total CLP:</span> <span id="ckTotal">$0</span></div>
+                        </div>
+                        <button type="submit" class="btn btn-gold btn-block btn-pay-now"><i class="fa-solid fa-lock"></i> CONFIRMAR & PAGAR</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/56998185589?text=Hola%20Cherry%20Chile!%20Me%20gustar%C3%ADa%20hacer%20una%20consulta." target="_blank" class="floating-whatsapp" title="Hablar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="wh-tooltip">¿Dudas? Chatea con nosotros</span>
+    </a>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
