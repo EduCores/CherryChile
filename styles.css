@@ -1668,7 +1668,7 @@ input, select, textarea { font-family: inherit; font-size: 15px; }
     .top-social a { width: 24px; height: 24px; font-size: 12px; }
     .brand-sub { display: none; }
     .logo-badge { width: 42px; height: 42px; font-size: 20px; }
-    .header-logo-img { height: 64px; max-width: 177px; }
+    .header-logo-img { height: 64px; max-width: 160px; }
     .catalog-filters { padding: 12px; }
     .filter-pills { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
     .filter-pills::-webkit-scrollbar { display: none; }
