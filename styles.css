@@ -1230,6 +1230,32 @@ textarea {
     aspect-ratio: 1/0.92;
     overflow: hidden;
     background: var(--light);
+    border-radius: var(--radius-md);
+    transition: all 0.5s ease;
+}
+
+.pc-image::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: 1;
+    background: linear-gradient(
+        0deg,
+        transparent,
+        transparent 30%,
+        rgba(255, 255, 255, 0.4)
+    );
+    transform: rotate(-45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.pc-image:hover::before {
+    opacity: 1;
+    transform: rotate(-45deg) translateY(100%);
 }
 
 .pc-image img {
@@ -1237,6 +1263,11 @@ textarea {
     height: 100%;
     object-fit: cover;
     transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pc-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
 .product-card:hover .pc-image img {
